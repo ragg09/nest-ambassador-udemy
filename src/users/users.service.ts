@@ -16,7 +16,15 @@ export class UsersService {
     return this.userRepository.save(options);
   }
 
-  async findOne(options: { email: string }): Promise<User | undefined> {
-    return this.userRepository.findOne({ where: { email: options.email } });
+  async findOne(options: {
+    id?: number;
+    email?: string;
+  }): Promise<User | undefined> {
+    if (options.id) {
+      return this.userRepository.findOne({ where: { id: options.id } });
+    } else if (options.email) {
+      return this.userRepository.findOne({ where: { email: options.email } });
+    }
+    return undefined;
   }
 }
