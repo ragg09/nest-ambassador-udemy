@@ -5,34 +5,15 @@ import { InjectRepository } from '@nestjs/typeorm';
 
 import { Repository } from 'typeorm';
 import { User } from './entities/user.entity';
+// import { AbstracService } from 'src/shared/abstract.service';
+
+import { AbstracService } from '../shared/abstract.service';
 
 @Injectable()
-export class UsersService {
+export class UsersService extends AbstracService {
   constructor(
     @InjectRepository(User) private readonly userRepository: Repository<User>,
-  ) {}
-
-  async save(options) {
-    return this.userRepository.save(options);
-  }
-
-  async findOne(options: {
-    id?: number;
-    email?: string;
-  }): Promise<User | undefined> {
-    if (options.id) {
-      return this.userRepository.findOne({ where: { id: options.id } });
-    } else if (options.email) {
-      return this.userRepository.findOne({ where: { email: options.email } });
-    }
-    return undefined;
-  }
-
-  async find(options) {
-    return this.userRepository.find(options);
-  }
-
-  async update(id: number, options) {
-    return this.userRepository.update(id, options);
+  ) {
+    super(userRepository);
   }
 }
