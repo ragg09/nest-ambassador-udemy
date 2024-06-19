@@ -19,7 +19,7 @@ export class Order {
   ambassador_email: string;
 
   @Column()
-  fist_name: string;
+  first_name: string;
 
   @Column()
   last_name: string;

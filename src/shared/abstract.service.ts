@@ -19,7 +19,7 @@ export abstract class AbstracService {
     return undefined;
   }
 
-  async find(options) {
+  async find(options = {}) {
     return this.repository.find(options);
   }
 
