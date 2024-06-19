@@ -6,12 +6,20 @@ import {
   Patch,
   Param,
   Delete,
+  UseInterceptors,
+  ClassSerializerInterceptor,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
 
-@Controller('users')
+@Controller()
+@UseInterceptors(ClassSerializerInterceptor)
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
+
+  @Get('admin/ambassadors')
+  async ambassador() {
+    return this.usersService.find({
+      where: { is_ambassador: true },
+    });
+  }
 }

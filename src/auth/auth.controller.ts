@@ -13,11 +13,11 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import { RegisterDto } from './dto/register.dto';
-import { UsersService } from 'src/users/users.service';
 import * as bcrypt from 'bcryptjs';
 import { JwtService } from '@nestjs/jwt';
 import { Response, Request } from 'express';
 import { AuthGuard } from './auth.guard';
+import { UsersService } from '../users/users.service';
 
 @Controller()
 @UseInterceptors(ClassSerializerInterceptor)
