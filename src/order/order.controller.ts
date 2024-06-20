@@ -1,12 +1,20 @@
-import { Controller, Get } from '@nestjs/common';
+import {
+  ClassSerializerInterceptor,
+  Controller,
+  Get,
+  UseInterceptors,
+} from '@nestjs/common';
 import { OrderService } from './order.service';
 
 @Controller()
+@UseInterceptors(ClassSerializerInterceptor)
 export class OrderController {
   constructor(private readonly orderService: OrderService) {}
 
   @Get('admin/orders')
-  all() {
-    return this.orderService.find();
+  async all() {
+    return this.orderService.find({
+      relations: ['order_items'],
+    });
   }
 }
