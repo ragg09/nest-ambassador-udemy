@@ -1,6 +1,6 @@
-import { Order } from 'src/order/entities/order';
-import { Product } from 'src/product/product';
-import { User } from 'src/users/entities/user.entity';
+import { Order } from '../../order/entities/order';
+import { Product } from '../../product/product';
+import { User } from '../../users/entities/user.entity';
 import {
   Code,
   Column,

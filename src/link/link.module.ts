@@ -3,9 +3,10 @@ import { LinkController } from './link.controller';
 import { LinkService } from './link.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Link } from './entities/link';
+import { SharedModule } from '../shared/shared.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Link])],
+  imports: [TypeOrmModule.forFeature([Link]), SharedModule],
   controllers: [LinkController],
   providers: [LinkService],
 })

@@ -9,7 +9,7 @@ import {
 } from 'typeorm';
 import { OrderItem } from './order-item';
 import { Exclude, Expose } from 'class-transformer';
-import { Link } from 'src/link/entities/link';
+import { Link } from '../../link/entities/link';
 
 @Entity('orders')
 export class Order {
